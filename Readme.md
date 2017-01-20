@@ -2,7 +2,7 @@
 
 [Flash messages](https://docs.typo3.org/typo3cms/CoreApiReference/ApiOverview/FlashMessages/Index.html) for [next.js](https://github.com/zeit/next.js). Works on both the client and the server.
 
- ## Example
+## Example
 
  ```js
  export default class Page extends Component {
