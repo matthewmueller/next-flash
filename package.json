@@ -1,12 +1,19 @@
 {
   "name": "next-flash",
   "version": "1.0.0",
-  "description": "",
+  "description": "flash messages for next",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "keywords": ["flash", "message", "next.js", "universal"],
+  "author": "Matthew Mueller",
+  "license": "MIT",
+  "devDependencies": {
+    "next": "2.0.0-beta17"
+  },
+  "dependencies": {
+    "component-cookie": "^1.1.3",
+    "cookie": "^0.3.1"
+  }
 }
