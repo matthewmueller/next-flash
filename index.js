@@ -11,18 +11,20 @@ const parser = require('cookie')
  */
 
 module.exports = {
-  set: function (ctx, value) {
+  set: function (ctx, value, options) {
+    options = options || {}
+    options.path = options.path || '/'
     if (arguments.length === 2) {
       if (ctx.req) {
         // server
-        ctx.res.setHeader('Set-Cookie', parser.serialize('flash', value))
+        ctx.res.setHeader('Set-Cookie', parser.serialize('flash', value, options))
       } else {
         // client
-        cookie('flash', JSON.stringify(value))
+        cookie('flash', JSON.stringify(value), options)
       }
     } else if (arguments.length === 1) {
       // client
-      cookie('flash', JSON.stringify(ctx))
+      cookie('flash', JSON.stringify(ctx), options)
     }
   },
   get: function (ctx) {
