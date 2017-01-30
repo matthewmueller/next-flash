@@ -1,6 +1,6 @@
 {
   "name": "next-flash",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "flash messages for next",
   "main": "index.js",
   "scripts": {
