@@ -5,6 +5,8 @@
 ## Example
 
  ```js
+ import flash from 'next-flash';
+ 
  export default class Page extends Component {
    static async getInitialProps (ctx) {
      return flash.get(ctx) || {}
