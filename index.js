@@ -2,22 +2,25 @@
  * Dependencies
  */
 
-const epoch = new Date('1970-01-01 00:00:00 UTC')
-const cookie = require('component-cookie')
-const parser = require('cookie')
+var epoch = new Date('1970-01-01 00:00:00 UTC')
+var cookie = require('component-cookie')
+var parser = require('cookie')
 
 /**
  * Export
  */
 
 module.exports = {
-  set: function (ctx, value, options) {
+  set: function(ctx, value, options) {
     options = options || {}
     options.path = options.path || '/'
     if (arguments.length === 2) {
       if (ctx.req) {
         // server
-        ctx.res.setHeader('Set-Cookie', parser.serialize('flash', value, options))
+        ctx.res.setHeader(
+          'Set-Cookie',
+          parser.serialize('flash', value, options)
+        )
       } else {
         // client
         cookie('flash', JSON.stringify(value), options)
@@ -27,19 +30,23 @@ module.exports = {
       cookie('flash', JSON.stringify(ctx), options)
     }
   },
-  get: function (ctx) {
+  get: function(ctx) {
+    var value
     if (ctx && ctx.req) {
       // server
-      const header = ctx.req.headers.cookie
+      var header = ctx.req.headers.cookie
       if (!header) return
-      const cookies = parser.parse(header)
+      var cookies = parser.parse(header)
       if (!cookies.flash) return
-      const value = JSON.parse(cookies.flash)
-      ctx.res.setHeader('Set-Cookie', parser.serialize('flash', value, { expires: epoch }))
+      value = JSON.parse(cookies.flash)
+      ctx.res.setHeader(
+        'Set-Cookie',
+        parser.serialize('flash', value, { expires: epoch })
+      )
       return value
     } else {
       // client
-      const value = cookie('flash')
+      value = cookie('flash')
       if (!value) return
       cookie('flash', null)
       return JSON.parse(value)
