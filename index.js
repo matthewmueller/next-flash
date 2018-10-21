@@ -19,7 +19,7 @@ module.exports = {
         // server
         ctx.res.setHeader(
           'Set-Cookie',
-          parser.serialize('flash', value, options)
+          parser.serialize('flash', JSON.stringify(value), options)
         )
       } else {
         // client
